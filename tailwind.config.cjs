@@ -17,6 +17,7 @@ module.exports = {
    },
    colors: {
     'main-blue': '#070724',
+    'main-black': '#1A1A1A',
    },
   },
  },
