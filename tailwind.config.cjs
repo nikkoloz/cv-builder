@@ -86,6 +86,8 @@ module.exports = {
     'main-purple': '#6B40E3',
     'main-red': '#F93B1D',
     "main-date": "#909090",
+    "main-valid": "#98E37E",
+    "main-invalid": "#F02424",
    },
   },
  },
