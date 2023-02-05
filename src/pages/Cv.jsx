@@ -1,22 +1,51 @@
-import Logo from "../../public/assets/LOGO.svg";
-import Stamp from "/assets/STAMP.svg";
+import image from "../../public/assets/LOGO.svg";
+import arrow from "../../public/assets/arrow.svg";
+import X from "../../public/assets/x.svg";
+import Resume from "../components/Resume";
+
 function Cv() {
   return (
-    <section
-      className="h-screen w-full bg-cover bg-center px-[70px] pt-[25px] text-center "
-      style={{ backgroundImage: "url('/assets/BG-01.png')" }}
-    >
-      <img src={Logo} alt="logo" className=" mb-[26px]" />
-      <div className=" border-b-2 border-solid border-black"></div>
-      <img
-        src={Stamp}
-        alt="stamp"
-        className=" absolute top-[473px] right-[545px]"
-      />
-      <button className="mt-[424px] rounded-[8px] bg-main-black py-[18px] px-[126px] font-medium text-white">
-        რეზიუმეს დამატება
+    <>
+      <button className="absolute top-[47px] left-[72px] flex h-4 w-[10px] p-6">
+        <img
+          src={arrow}
+          alt="arrow"
+          className="absolute top-4 left-5 h-4 w-[10px] "
+        />
       </button>
-    </section>
+      <div className="absolute right-[70px] top-[54px] h-[167px] w-[427px] px-8 pt-10 shadow-custom-shadow">
+        <img src={X} alt="X" className="absolute right-[12px] top-[18px]" />
+        <h1 className="text-du text-main-black">
+          რეზიუმე წარმატებით გაიგზავნა 🎉
+        </h1>
+      </div>
+      <div className="border-[1px] border-black">
+        <Resume
+          name={"ქრისტეფორე"}
+          surname={"მგალობლიშვილი"}
+          image={image}
+          email={"mmeesdssnikko@agruni.ge"}
+          mobNumber={"50055443443"}
+          aboutMe={
+            "asfaffasfasasfaffasfasasfaff asfasasfaff asfasasfaffasfasasfaffasf asasfaffasf asasfaffasfasasfa ffasfasasfa ffasfasas faff asfasasfaffas fasasfaffa sfasasfaff asfasasfaff asfasasfaf fasfasasfaff asfasasfa ffasfasasfa ffasfas"
+          }
+          position={"მერძევე მთავარი პროფესორი"}
+          company={"სახლშო"}
+          workDateFrom={"22-244-424"}
+          workDateTo={"22-244-424"}
+          experience={
+            "Experienced Javascript Native Developer with 5 years in tდსდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,ფლაასდაფევსდფაწეფვრბფსდაეფედფერვსდფ"
+          }
+          school={"ილია "}
+          status={"სდსდ"}
+          schoolDate={"212333231"}
+          aboutEducation={
+            "erienced Javascript Native Developer with 5 years in tდსდდდდდდდ დდდდდდდდდდ დდდდდდდდდ დდდდდდდდდდდ დდდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,"
+          }
+          border={true}
+        />
+      </div>
+    </>
   );
 }
 
