@@ -102,7 +102,7 @@ function PersonalInfo() {
         aboutEducation={
           "erienced Javascript Native Developer with 5 years in tდსდდდდდდდ დდდდდდდდდდ დდდდდდდდდ დდდდდდდდდდდ დდდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,"
         }
-        border={true}
+        border={false}
       />
     </section>
   );
