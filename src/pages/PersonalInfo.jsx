@@ -1,9 +1,18 @@
 import image from "../assets/STAMP.svg";
 import Resume from "../components/Resume";
 import InputC from "../components/InputC";
+import arrow from "../assets/arrow.svg";
 function PersonalInfo() {
   return (
     <section className="flex">
+      <button className="absolute top-[37px] left-[41px] rounded-full bg-red-300 p-5">
+        <img
+          src={arrow}
+          alt="arrow"
+          className="absolute top-[13px] left-[14px]"
+        />
+      </button>
+
       <section className=" h-screen min-w-[1098px] bg-main-bluelight px-[150px] pt-[47px]">
         <div className="mb-[50px] flex justify-between border-b-[1px] border-black pb-3">
           <h1 className="text-h17">პირადი ინფო</h1>
@@ -61,6 +70,7 @@ function PersonalInfo() {
             placeholder="anzorr666@redberry.ge"
             id="email"
             pText="უნდა მთავრდებოდეს @redberry.ge-ით"
+            inputType="email"
             pClass=""
             inpClass=""
           />
@@ -97,6 +107,8 @@ function PersonalInfo() {
         aboutExperience={
           "Experienced Javascript Native Developer with 5 years in tდსდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,ფლაასდაფევსდფაწეფვრბფსდაეფედფერვსდფ"
         }
+        experiences={[]}
+        educations={[]}
         school={"ილია "}
         status={"სდსდ"}
         schoolDate={"212333231"}

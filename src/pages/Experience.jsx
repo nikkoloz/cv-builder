@@ -1,17 +1,27 @@
 import image from "../assets/STAMP.svg";
 import Resume from "../components/Resume";
-import ExperienceCom from "../components/ExperienceCom";
+import ExperienceForm from "../components/ExperienceForm";
+import arrow from "../assets/arrow.svg";
+
 function Experience() {
   return (
     <section className="flex ">
+      <button className="absolute top-[37px] left-[41px] z-40  rounded-full p-5">
+        <img
+          src={arrow}
+          alt="arrow"
+          className="absolute top-[13px] left-[14px]"
+        />
+      </button>
+
       <section className="relative  min-w-[1098px] bg-main-bluelight px-[150px] pt-[47px]">
         <div className="mb-[50px] flex justify-between border-b-[1px] border-black pb-3">
           <h1 className="text-h17">გამოცდილება</h1>
           <h1 className="text-gb1">2/3</h1>
         </div>
         <form className="">
-          <ExperienceCom />
-          <ExperienceCom />
+          <ExperienceForm />
+          <ExperienceForm />
 
           <button className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white">
             მეტი გამოცდილების დამატება

@@ -1,5 +1,5 @@
 import InputC from "./InputC";
-function ExperienceCom() {
+function ExperienceForm() {
   return (
     <div>
       <InputC
@@ -56,4 +56,4 @@ function ExperienceCom() {
   );
 }
 
-export default ExperienceCom;
+export default ExperienceForm;

@@ -42,6 +42,8 @@ function Cv() {
           aboutEducation={
             "erienced Javascript Native Developer with 5 years in tდსდდდდდდდ დდდდდდდდდდ დდდდდდდდდ დდდდდდდდდდდ დდდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,"
           }
+          experiences={[]}
+          educations={[]}
           border={true}
           marginT={true}
           marginB={true}
