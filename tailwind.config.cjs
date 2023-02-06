@@ -79,7 +79,10 @@ module.exports = {
    },
    colors: {
     "main-gray": "#C8C8C8",
+    "main-gray2": "#C1C1C1",
+    "main-gray3": "#BCBCBC",
     'main-blue1': '#0E80BF',
+    'main-blue2': '#62A1EB',
     'main-blue': '#070724',
     'main-black': '#1A1A1A',
     'main-bluelight': '#e8f3fb',

@@ -1,6 +1,6 @@
-import cvLogo from "../../public/assets/cv-logo.svg";
-import snail from "../../public/assets/snail.svg";
-import tel from "../../public/assets/tel.svg";
+import cvLogo from "../assets/cv-logo.svg";
+import snail from "../assets/snail.svg";
+import tel from "../assets/tel.svg";
 function Resume({
   image,
   name,
@@ -18,10 +18,15 @@ function Resume({
   schoolDate,
   aboutEducation,
   border,
+  marginT,
+  marginB,
+
 }) {
   return (
     <section
-      className={`relative mx-auto mb-[129px] mt-[54px] min-h-[1080px] max-w-[822px] pb-32 pl-[80px] pr-[75px] 
+      className={`relative mx-auto min-h-[1080px] max-w-[822px] pb-32 pl-[80px] pr-[75px] 
+      ${marginT && "mt-[54px]"}   
+      ${marginB && "mb-[100px]"}   
       ${border && " border-[1px] border-black"}`}
     >
       <div className="flex border-b-[1px] border-main-gray">
@@ -46,6 +51,7 @@ function Resume({
           className=" mt-12 h-[246px] w-[246px] rounded-full bg-black"
         />
       </div>
+
       <div
         className={` border-t-[1px] border-main-gray pt-6 ${
           !(position || company || workDateFrom || workDateTo || experience) &&
@@ -65,6 +71,7 @@ function Resume({
         </h2>
         <p className="mb-8 text-cp2">{experience}</p>
       </div>
+
       <div
         className={`border-t-[1px] border-main-gray pt-6 ${
           !(school || status || schoolDate || aboutEducation) && "hidden"
@@ -82,6 +89,7 @@ function Resume({
         </h2>
         <p className="text-cp2">{aboutEducation}</p>
       </div>
+
       <img src={cvLogo} alt="logo" className="absolute bottom-[44px]" />
     </section>
   );

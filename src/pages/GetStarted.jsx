@@ -1,5 +1,5 @@
-import Logo from "../../public/assets/LOGO.svg";
-import Stamp from "/assets/STAMP.svg";
+import Logo from "../assets/LOGO.svg";
+import Stamp from "../assets/STAMP.svg";
 
 function GetStarted() {
   return (
@@ -14,7 +14,7 @@ function GetStarted() {
         alt="stamp"
         className=" absolute top-[473px] right-[545px]"
       />
-      <button className="mt-[424px] rounded-[8px] bg-main-black py-[18px] px-[126px] font-medium text-white">
+      <button className="mt-[424px] rounded-[8px] bg-main-black py-[18px] px-[126px] text-gb font-medium text-white">
         რეზიუმეს დამატება
       </button>
     </section>

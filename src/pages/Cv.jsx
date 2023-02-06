@@ -1,6 +1,6 @@
-import image from "../../public/assets/LOGO.svg";
-import arrow from "../../public/assets/arrow.svg";
-import X from "../../public/assets/x.svg";
+import image from "../assets/LOGO.svg";
+import arrow from "../assets/arrow.svg";
+import X from "../assets/x.svg";
 import Resume from "../components/Resume";
 
 function Cv() {
@@ -43,6 +43,8 @@ function Cv() {
             "erienced Javascript Native Developer with 5 years in tდსდდდდდდდ დდდდდდდდდდ დდდდდდდდდ დდდდდდდდდდდ დდდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,"
           }
           border={true}
+          marginT={true}
+          marginB={true}
         />
       </div>
     </>
