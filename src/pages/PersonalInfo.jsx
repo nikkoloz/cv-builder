@@ -54,7 +54,7 @@ function PersonalInfo() {
               placeholder="ზოგადი ინფო შენ შესახებ"
             ></textarea>
           </div>
-          
+
           <InputC
             divClass="mb-8"
             labelText="მეილი"
@@ -94,7 +94,7 @@ function PersonalInfo() {
         company={"სახლშო"}
         workDateFrom={"22-244-424"}
         workDateTo={"22-244-424"}
-        experience={
+        aboutExperience={
           "Experienced Javascript Native Developer with 5 years in tდსდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,ფლაასდაფევსდფაწეფვრბფსდაეფედფერვსდფ"
         }
         school={"ილია "}

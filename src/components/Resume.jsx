@@ -8,23 +8,15 @@ function Resume({
   email,
   mobNumber,
   aboutMe,
-  position,
-  company,
-  workDateFrom,
-  workDateTo,
-  experience,
-  school,
-  status,
-  schoolDate,
-  aboutEducation,
+  experiences,
+  educations,
   border,
   marginT,
   marginB,
-
 }) {
   return (
     <section
-      className={`relative mx-auto min-h-[1080px] max-w-[822px] pb-32 pl-[80px] pr-[75px] 
+      className={`relative mx-auto min-h-[1080px] max-w-[822px] bg-white pb-32 pl-[80px] pr-[75px]
       ${marginT && "mt-[54px]"}   
       ${marginB && "mb-[100px]"}   
       ${border && " border-[1px] border-black"}`}
@@ -51,45 +43,60 @@ function Resume({
           className=" mt-12 h-[246px] w-[246px] rounded-full bg-black"
         />
       </div>
-
       <div
         className={` border-t-[1px] border-main-gray pt-6 ${
-          !(position || company || workDateFrom || workDateTo || experience) &&
-          "hidden"
+          experiences.length === 0 && "hidden"
         }`}
       >
         <h1 className="mb-4 text-ch2 text-main-red ">გამოცდილება</h1>
-        <div className="mb-[7px] flex text-ne text-main-black">
-          <h2 className="mr-2">
-            {position}
-            {position && company && ","}
-          </h2>
-          <h2>{company}</h2>
-        </div>
-        <h2 className="mb-4 text-main-date" style={{ fontStyle: "italic" }}>
-          {workDateFrom} {workDateFrom && workDateTo && "-"} {workDateTo}
-        </h2>
-        <p className="mb-8 text-cp2">{experience}</p>
+        {experiences.map((A, i) => {
+          return (
+            <div key={i}>
+              <div className="mb-[7px] flex text-ne text-main-black">
+                <h2 className="mr-2">
+                  {A.position}
+                  {A.position && A.company && ","}
+                </h2>
+                <h2>{A.company}</h2>
+              </div>
+              <h2
+                className="mb-4 text-main-date"
+                style={{ fontStyle: "italic" }}
+              >
+                {A.workDateFrom} {A.workDateFrom && A.workDateTo && "-"}{" "}
+                {A.workDateTo}
+              </h2>
+              <p className="mb-8 text-cp2">{A.aboutExperience}</p>
+            </div>
+          );
+        })}
       </div>
-
       <div
-        className={`border-t-[1px] border-main-gray pt-6 ${
-          !(school || status || schoolDate || aboutEducation) && "hidden"
+        className={`relative border-t-[1px] border-main-gray pt-6 ${
+          educations.length === 0 && "hidden"
         } `}
       >
         <h1 className="mb-4 text-ch2 text-main-red ">განათლება</h1>
-        <div className="flex">
-          <h2 className="mr-2">
-            {school} {school && status && ","}
-          </h2>
-          <h2>{status}</h2>
-        </div>
-        <h2 className="mb-4 text-main-date" style={{ fontStyle: "italic" }}>
-          {schoolDate}
-        </h2>
-        <p className="text-cp2">{aboutEducation}</p>
+        {educations.map((B, i) => {
+          return (
+            <div key={i} className="mb-6">
+              <div className="flex">
+                <h2 className="mr-2">
+                  {B.school} {B.school && B.status && ","}
+                </h2>
+                <h2>{B.status}</h2>
+              </div>
+              <h2
+                className="mb-4 text-main-date"
+                style={{ fontStyle: "italic" }}
+              >
+                {B.schoolDate}
+              </h2>
+              <p className="text-cp2">{B.aboutEducation}</p>
+            </div>
+          );
+        })}
       </div>
-
       <img src={cvLogo} alt="logo" className="absolute bottom-[44px]" />
     </section>
   );
