@@ -1,17 +1,21 @@
-import image from "../assets/STAMP.svg";
+import React from "react";
+import { Link } from "react-router-dom";
+import { redirect } from "react-router-dom";
+import ROUTES from "../config/ROUTES";
 import Resume from "../components/Resume";
 import InputC from "../components/InputC";
+import image from "../assets/STAMP.svg";
 import arrow from "../assets/arrow.svg";
 function PersonalInfo() {
   return (
     <section className="flex">
-      <button className="absolute top-[37px] left-[41px] rounded-full bg-red-300 p-5">
+      <Link to={`${ROUTES.GETSTARTED}`}>
         <img
           src={arrow}
           alt="arrow"
-          className="absolute top-[13px] left-[14px]"
+          className="absolute top-[45px] left-[48px] p-3"
         />
-      </button>
+      </Link>
 
       <section className=" h-screen min-w-[1098px] bg-main-bluelight px-[150px] pt-[47px]">
         <div className="mb-[50px] flex justify-between border-b-[1px] border-black pb-3">
@@ -87,7 +91,7 @@ function PersonalInfo() {
             className="float-right rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
             type="submit"
           >
-            Submit
+            შემდეგი
           </button>
         </form>
       </section>

@@ -1,5 +1,5 @@
 import { Route, Routes as RoutesList } from "react-router-dom";
-import { ROUTES_CONFIG } from "./config/ROUTES";
+import { ROUTES_CONFIG } from "./config/ROUTES_CONFIG";
 
 function RoutesLib() {
   return (

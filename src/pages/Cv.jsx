@@ -2,17 +2,20 @@ import image from "../assets/LOGO.svg";
 import arrow from "../assets/arrow.svg";
 import X from "../assets/x.svg";
 import Resume from "../components/Resume";
+import React from "react";
+import { Link } from "react-router-dom";
+import ROUTES from "../config/ROUTES";
 
 function Cv() {
   return (
     <>
-      <button className="absolute top-[47px] left-[72px] flex h-4 w-[10px] p-6">
+      <Link to={`/${ROUTES.EDUCATION}`}>
         <img
           src={arrow}
           alt="arrow"
-          className="absolute top-4 left-5 h-4 w-[10px] "
+          className="absolute top-[45px] left-[48px] p-3"
         />
-      </button>
+      </Link>
       <div className="absolute right-[70px] top-[54px] h-[167px] w-[427px] px-8 pt-10 shadow-custom-shadow">
         <img src={X} alt="X" className="absolute right-[12px] top-[18px]" />
         <h1 className="text-du text-main-black">

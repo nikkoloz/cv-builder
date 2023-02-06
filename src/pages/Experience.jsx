@@ -2,17 +2,19 @@ import image from "../assets/STAMP.svg";
 import Resume from "../components/Resume";
 import ExperienceForm from "../components/ExperienceForm";
 import arrow from "../assets/arrow.svg";
-
+import React from "react";
+import { Link } from "react-router-dom";
+import ROUTES from "../config/ROUTES";
 function Experience() {
   return (
     <section className="flex ">
-      <button className="absolute top-[37px] left-[41px] z-40  rounded-full p-5">
+      <Link to={`/${ROUTES.PERSONAL}`}>
         <img
           src={arrow}
           alt="arrow"
-          className="absolute top-[13px] left-[14px]"
+          className="absolute top-[45px] left-[48px] z-40 p-3 "
         />
-      </button>
+      </Link>
 
       <section className="relative  min-w-[1098px] bg-main-bluelight px-[150px] pt-[47px]">
         <div className="mb-[50px] flex justify-between border-b-[1px] border-black pb-3">
