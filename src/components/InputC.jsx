@@ -2,44 +2,59 @@ import valid from "../assets/valid.svg";
 import invalid from "../assets/invalid.svg";
 
 function InputC({
-  divClass,
-  labelText,
-  placeholder,
-  id,
-  pText,
-  pClass,
-  inpClass,
-  isInvalid,
-  isValid,
   inputType,
+  id,
+  divClass,
+  inpClass,
+  pClass,
+  labelText,
+  pText,
+  placeholder,
+  value,
+  onChange,
+  onBlur,
+  error,
+  touched,
 }) {
+  let isError = !!error;
   return (
     <div className={`relative flex w-full flex-col  ${divClass}`}>
-      <label className="mb-2 text-lb" htmlFor={id}>
+      <label
+        className={`mb-2 text-lb ${
+          touched && isError ? " text-main-invalid" : "text-black"
+        }`}
+        htmlFor={id}
+      >
         {labelText}
       </label>
       <div className="">
         <input
-          className={`mb-2 w-full rounded-[4px] border-[1px] border-main-gray3 px-4 py-[14px] text-lbp focus:shadow-none focus:outline-2    
+          className={`mb-2 w-full rounded-[4px] border-[1px] border-main-gray3 px-4 py-[14px] text-lbp 
+          focus:border-main-gray3 focus:shadow-none focus:outline-2
           ${inpClass} 
-          ${isValid && "border-[1px] border-main-valid"} 
-          ${isInvalid && "border-[1px] border-main-invalid"}`}
+          ${touched && !isError && " border-main-valid"} 
+          ${touched && isError && " border-main-invalid"}`}
           type={inputType ? inputType : "text"}
           id={id}
           placeholder={placeholder}
           name={id}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
         />
         <img
           src={invalid}
           alt="nwnw"
           className={`absolute right-[-30px] top-[47px] ${
-            !isInvalid && "hidden"
+            touched && isError ? "" : "hidden"
           }`}
         />
         <img
           src={valid}
           alt="nwnw"
-          className={`absolute right-[5px] top-[47px] ${!isValid && "hidden"}`}
+          className={`absolute right-[5px] top-[47px] ${
+            touched && !isError ? "" : "hidden"
+          }`}
         />
       </div>
       <p className={`${pClass} text-er`}>{pText}</p>

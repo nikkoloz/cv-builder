@@ -1,12 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { redirect } from "react-router-dom";
+import { useFormik } from "formik";
+import { personalInfoV } from "../validations/personalInfoV";
 import ROUTES from "../config/ROUTES";
 import Resume from "../components/Resume";
 import InputC from "../components/InputC";
 import image from "../assets/STAMP.svg";
 import arrow from "../assets/arrow.svg";
+
+const onSubmit = () => {
+  console.log("submitted");
+};
+
 function PersonalInfo() {
+  const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: {
+        name: "",
+        surname: "",
+        image: "",
+        message: "",
+        email: "",
+        mobile: "",
+      },
+      validationSchema: personalInfoV,
+      onSubmit,
+    });
   return (
     <section className="flex">
       <Link to={`${ROUTES.GETSTARTED}`}>
@@ -16,13 +36,12 @@ function PersonalInfo() {
           className="absolute top-[45px] left-[48px] p-3"
         />
       </Link>
-
       <section className=" h-screen min-w-[1098px] bg-main-bluelight px-[150px] pt-[47px]">
         <div className="mb-[50px] flex justify-between border-b-[1px] border-black pb-3">
           <h1 className="text-h17">პირადი ინფო</h1>
           <h1 className="text-gb1">1/3</h1>
         </div>
-        <form className="">
+        <form className="" onSubmit={handleSubmit}>
           <div className="mb-[54px] flex w-full justify-between">
             <InputC
               divClass="mr-[56px]"
@@ -30,8 +49,11 @@ function PersonalInfo() {
               placeholder="ქრისტეფორე"
               id="name"
               pText="მინიმუმ 2 ასო, ქართული ასოები"
-              pClass=""
-              inpClass=""
+              value={values.name}
+              onChange={handleChange}
+              onBlur={handleBlur("name")}
+              touched={touched.name}
+              error={errors.name}
             />
             <InputC
               divClass="mr-[56px]"
@@ -39,8 +61,11 @@ function PersonalInfo() {
               placeholder="მგალობლიშვილი"
               id="surname"
               pText="მინიმუმ 2 ასო, ქართული ასოები"
-              pClass=""
-              inpClass=""
+              onChange={handleChange}
+              value={values.surname}
+              touched={touched.surname}
+              error={errors.surname}
+              onBlur={handleBlur("surname")}
             />
           </div>
           <div className="mb-[54px]">
@@ -52,7 +77,17 @@ function PersonalInfo() {
               >
                 ატვირთვა
               </label>
-              <input className=" hidden " type="file" id="image" name="image" />
+              <input
+                className="hidden"
+                type="file"
+                id="image"
+                name="image"
+                onChange={handleChange}
+                value={values.image}
+                onBlur={handleBlur("image")}
+                touched={touched.image}
+                error={errors.image}
+              />
             </div>
           </div>
 
@@ -65,6 +100,11 @@ function PersonalInfo() {
               name="message"
               id="message"
               placeholder="ზოგადი ინფო შენ შესახებ"
+              onChange={handleChange}
+              onBlur={handleBlur("message")}
+              value={values.message}
+              touched={touched.message}
+              error={errors.message}
             ></textarea>
           </div>
 
@@ -75,8 +115,11 @@ function PersonalInfo() {
             id="email"
             pText="უნდა მთავრდებოდეს @redberry.ge-ით"
             inputType="email"
-            pClass=""
-            inpClass=""
+            onBlur={handleBlur("email")}
+            onChange={handleChange}
+            value={values.email}
+            touched={touched.email}
+            error={errors.email}
           />
           <InputC
             divClass="mb-[160px]"
@@ -84,8 +127,11 @@ function PersonalInfo() {
             placeholder="+995 551 12 34 56"
             id="mobile"
             pText="უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"
-            pClass=""
-            inpClass=""
+            onBlur={handleBlur("mobile")}
+            onChange={handleChange}
+            value={values.mobile}
+            touched={touched.mobile}
+            error={errors.mobile}
           />
           <button
             className="float-right rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
