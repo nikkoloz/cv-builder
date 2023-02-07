@@ -1,19 +1,24 @@
-import image from "../assets/STAMP.svg";
-import EducationForm from "../components/EducationForm";
-import Resume from "../components/Resume";
-import arrow from "../assets/arrow.svg";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getOptions } from "../http/getOptions";
+import EducationForm from "../components/EducationForm";
 import ROUTES from "../config/ROUTES";
+import Resume from "../components/Resume";
+import image from "../assets/STAMP.svg";
+import arrow from "../assets/arrow.svg";
 function Education() {
+  const [Options, setOptions] = useState([]);
+  useEffect(() => {
+    getOptions(setOptions);
+  }, []);
   return (
     <section className="flex ">
       <Link to={`/${ROUTES.EXPERIENCE}`}>
-          <img
-            src={arrow}
-            alt="arrow"
-            className="absolute top-[45px] left-[48px] p-3 z-40"
-          />
+        <img
+          src={arrow}
+          alt="arrow"
+          className="absolute top-[45px] left-[48px] z-40 p-3"
+        />
       </Link>
       <section className="relative  min-w-[1098px] bg-main-bluelight px-[150px] pt-[47px]">
         <div className="mb-[50px] flex justify-between border-b-[1px] border-black pb-3">

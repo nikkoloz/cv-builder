@@ -23,7 +23,7 @@ function EducationForm() {
             id="degree"
             className="mb-2 w-full rounded-[4px] border-[1px] border-main-gray3 bg-white px-4 py-[14px] text-lbp focus:shadow-none focus:outline-2"
           >
-            <option value="DEFAULT" disabled selected hidden>
+            <option value="DEFAULT" disabled >
               აირჩიეთ ხარისხი
             </option>
             <option value="საშუალო სკოლის დიპლომი">
