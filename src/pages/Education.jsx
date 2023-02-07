@@ -7,7 +7,7 @@ import Resume from "../components/Resume";
 import image from "../assets/STAMP.svg";
 import arrow from "../assets/arrow.svg";
 function Education() {
-  const [Options, setOptions] = useState([]);
+  const [options, setOptions] = useState([]);
   useEffect(() => {
     getOptions(setOptions);
   }, []);
@@ -26,8 +26,8 @@ function Education() {
           <h1 className="text-gb1">3/3</h1>
         </div>
         <form className="">
-          <EducationForm />
-          <EducationForm />
+          <EducationForm options={options} />
+          <EducationForm options={options} />
           <button className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white">
             სხვა სასწავლებლის დამატება
           </button>

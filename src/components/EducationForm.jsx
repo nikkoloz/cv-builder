@@ -1,5 +1,5 @@
 import InputC from "./InputC";
-function EducationForm() {
+function EducationForm({options}) {
   return (
     <div>
       <InputC
@@ -23,10 +23,17 @@ function EducationForm() {
             id="degree"
             className="mb-2 w-full rounded-[4px] border-[1px] border-main-gray3 bg-white px-4 py-[14px] text-lbp focus:shadow-none focus:outline-2"
           >
-            <option value="DEFAULT" disabled >
+            <option value="DEFAULT" disabled>
               აირჩიეთ ხარისხი
             </option>
-            <option value="საშუალო სკოლის დიპლომი">
+            {options.map((opt) => {
+              return (
+                <option value={opt.title} key={opt.id}>
+                  {opt.title}
+                </option>
+              );
+            })}
+            {/* <option value="საშუალო სკოლის დიპლომი">
               საშუალო სკოლის დიპლომი
             </option>
             <option value="ზოგადსაგანმანათლებლო დიპლომი">
@@ -40,7 +47,7 @@ function EducationForm() {
             <option value="კოლეჯი (ხარისხის გარეშე)">
               კოლეჯი (ხარისხის გარეშე)
             </option>
-            <option value="სხვა">სხვა</option>
+            <option value="სხვა">სხვა</option> */}
           </select>
           <p className=""></p>
         </div>
