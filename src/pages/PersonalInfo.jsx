@@ -83,8 +83,8 @@ function PersonalInfo() {
                 id="image"
                 name="image"
                 onChange={handleChange}
-                value={values.image}
                 onBlur={handleBlur("image")}
+                value={values.image}
                 touched={touched.image}
                 error={errors.image}
               />
@@ -103,8 +103,6 @@ function PersonalInfo() {
               onChange={handleChange}
               onBlur={handleBlur("message")}
               value={values.message}
-              touched={touched.message}
-              error={errors.message}
             ></textarea>
           </div>
 

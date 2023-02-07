@@ -1,10 +1,10 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import ROUTES from "../config/ROUTES";
 import image from "../assets/STAMP.svg";
 import Resume from "../components/Resume";
 import ExperienceForm from "../components/ExperienceForm";
 import arrow from "../assets/arrow.svg";
-import React from "react";
-import { Link } from "react-router-dom";
-import ROUTES from "../config/ROUTES";
 function Experience() {
   return (
     <section className="flex ">
@@ -21,8 +21,7 @@ function Experience() {
           <h1 className="text-h17">გამოცდილება</h1>
           <h1 className="text-gb1">2/3</h1>
         </div>
-        <form className="">
-          <ExperienceForm />
+        <div className="">
           <ExperienceForm />
 
           <button className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white">
@@ -43,7 +42,7 @@ function Experience() {
               შემდეგი
             </button>
           </div>
-        </form>
+        </div>
       </section>
       <Resume
         name={"ქრისტეფორე"}

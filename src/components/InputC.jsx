@@ -15,6 +15,7 @@ function InputC({
   onBlur,
   error,
   touched,
+  isDateInput,
 }) {
   let isError = !!error;
   return (
@@ -52,9 +53,9 @@ function InputC({
         <img
           src={valid}
           alt="nwnw"
-          className={`absolute right-[5px] top-[47px] ${
-            touched && !isError ? "" : "hidden"
-          }`}
+          className={`absolute top-[47px]
+           ${isDateInput ? "right-[-30px]" : "right-[5px]"}
+           ${touched && !isError ? "" : "hidden"}`}
         />
       </div>
       <p className={`${pClass} text-er`}>{pText}</p>
