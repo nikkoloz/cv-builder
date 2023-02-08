@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import EducationForm from "../components/EducationForm";
 import ROUTES from "../config/ROUTES";
@@ -6,8 +6,18 @@ import Resume from "../components/Resume";
 import image from "../assets/STAMP.svg";
 import arrow from "../assets/arrow.svg";
 import { AppContext } from "../context/AppContext";
+import { increaseFormsArray } from "../functions/increaseFormsArray";
+import { educationFormsIdArrKey } from "../config/localstorageKeys";
 function Education() {
   const { options } = useContext(AppContext);
+  const [formsArrId, setFormsArrId] = useState([1]);
+  useEffect(() => {
+    const ids = JSON.parse(localStorage.getItem(educationFormsIdArrKey));
+    ids !== null && setFormsArrId(ids);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem(educationFormsIdArrKey, JSON.stringify(formsArrId));
+  }, [formsArrId]);
   return (
     <section className="flex ">
       <Link to={`/${ROUTES.EXPERIENCE}`}>
@@ -22,10 +32,17 @@ function Education() {
           <h1 className="text-h17">განათლება</h1>
           <h1 className="text-gb1">3/3</h1>
         </div>
-        <form className="">
-          <EducationForm options={options} />
-          <EducationForm options={options} />
-          <button className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white">
+        <div className="">
+          {formsArrId.map((id) => {
+            return <EducationForm options={options} id={id} key={id} />;
+          })}
+          <button
+            className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white"
+            onClick={(e) => {
+              e.preventDefault();
+              increaseFormsArray(formsArrId, setFormsArrId);
+            }}
+          >
             სხვა სასწავლებლის დამატება
           </button>
           <div className="mt-[115px] pb-10 ">
@@ -42,7 +59,7 @@ function Education() {
               დასტულება
             </button>
           </div>
-        </form>
+        </div>
       </section>
       <Resume
         name={"ქრისტეფორე"}

@@ -9,13 +9,16 @@ import { increaseFormsArray } from "../functions/increaseFormsArray";
 import { experienceFormsIdArrKey } from "../config/localstorageKeys";
 function Experience() {
   const [formsArrId, setFormsArrId] = useState([1]);
+
   useEffect(() => {
     const ids = JSON.parse(localStorage.getItem(experienceFormsIdArrKey));
     ids !== null && setFormsArrId(ids);
   }, []);
+
   useEffect(() => {
     localStorage.setItem(experienceFormsIdArrKey, JSON.stringify(formsArrId));
   }, [formsArrId]);
+
   return (
     <section className="flex ">
       <Link to={`/${ROUTES.PERSONAL}`}>
@@ -36,7 +39,8 @@ function Experience() {
           })}
           <button
             className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               increaseFormsArray(formsArrId, setFormsArrId);
             }}
           >

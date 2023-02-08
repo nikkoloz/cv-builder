@@ -1,27 +1,37 @@
 import InputC from "./InputC";
 import { useFormik } from "formik";
 import { educationV } from "../validations/educationV";
+import {
+  getValuesFromLocalStorage,
+  saveValuesToLocalStorage,
+} from "../functions/valuesUpdatingF";
+import { educationKey } from "../config/localstorageKeys";
 import valid from "../assets/valid.svg";
 import invalid from "../assets/invalid.svg";
+import { useEffect } from "react";
 
 const onSubmit = () => {
   console.log("submitted");
 };
 
-function EducationForm({ options }) {
+function EducationForm({ options, id }) {
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
-      initialValues: {
+      initialValues: getValuesFromLocalStorage(educationKey + id, {
         school: "",
         degree: "",
         educationDate: "",
         aboutSchool: "",
-      },
+      }),
       validationSchema: educationV,
       onSubmit,
     });
+
+  useEffect(() => {
+    saveValuesToLocalStorage(values, educationKey + id);
+  }, [values]);
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <InputC
         divClass="mb-[30px]"
         labelText="სასწავლებელი"
@@ -108,7 +118,7 @@ function EducationForm({ options }) {
            ${touched.aboutSchool && !errors.aboutSchool ? "" : "hidden"}`}
         />
       </div>
-    </div>
+    </form>
   );
 }
 
