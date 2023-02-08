@@ -15,7 +15,6 @@ function InputC({
   onBlur,
   error,
   touched,
-  isDateInput,
 }) {
   let isError = !!error;
   return (
@@ -54,7 +53,7 @@ function InputC({
           src={valid}
           alt="nwnw"
           className={`absolute top-[47px]
-           ${isDateInput ? "right-[-30px]" : "right-[5px]"}
+           ${inputType === "date" ? "right-[-30px]" : "right-[5px]"}
            ${touched && !isError ? "" : "hidden"}`}
         />
       </div>

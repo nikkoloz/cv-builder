@@ -21,9 +21,6 @@ function ExperienceForm() {
       validationSchema: experienceV,
       onSubmit,
     });
-  console.log(errors);
-  // console.log(values);
-  // console.log(touched);
   return (
     <form onSubmit={handleSubmit}>
       <InputC
@@ -82,7 +79,9 @@ function ExperienceForm() {
       <div className="relative mb-[45px] flex flex-col border-b-[1px] border-main-gray2 pb-[58px]">
         <label
           className={`mb-2 text-lb ${
-            touched.aboutJob && errors.aboutJob ? " text-main-invalid" : "text-black"
+            touched.aboutJob && errors.aboutJob
+              ? " text-main-invalid"
+              : "text-black"
           }`}
           htmlFor="aboutJob"
         >

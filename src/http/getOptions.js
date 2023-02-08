@@ -3,7 +3,6 @@ import axios from "axios";
 export const getOptions = async (setter) => {
  try {
   let dataFromLocalStorage = localStorage.getItem('DEGREE-OPTIONS');
-  console.log(dataFromLocalStorage);
   if (dataFromLocalStorage) {
    setter(JSON.parse(dataFromLocalStorage));
   } else {
