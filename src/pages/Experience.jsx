@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ROUTES from "../config/ROUTES";
 import image from "../assets/STAMP.svg";
 import Resume from "../components/Resume";
 import ExperienceForm from "../components/ExperienceForm";
 import arrow from "../assets/arrow.svg";
+import { increaseFormsArray } from "../functions/increaseFormsArray";
 function Experience() {
+  const [formsArrId, setFormsArrId] = useState([1]);
+
+  const handleFormAddingButton = () => {
+    increaseFormsArray(formsArrId, setFormsArrId);
+  };
+
   return (
     <section className="flex ">
       <Link to={`/${ROUTES.PERSONAL}`}>
         <img
           src={arrow}
           alt="arrow"
-          className="absolute top-[45px] left-[48px] z-40 p-3 "
+          className="absolute top-[45px] left-[48px] z-40 p-3"
         />
       </Link>
 
@@ -21,14 +28,18 @@ function Experience() {
           <h1 className="text-h17">გამოცდილება</h1>
           <h1 className="text-gb1">2/3</h1>
         </div>
-        <div className="">
-          <ExperienceForm />
-
-          <button className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white">
+        <div>
+          {formsArrId.map((id) => {
+            return <ExperienceForm id={id} key={id} />;
+          })}
+          <button
+            className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white"
+            onClick={handleFormAddingButton}
+          >
             მეტი გამოცდილების დამატება
           </button>
 
-          <div className="mt-[115px] pb-10 ">
+          <div className="mt-[115px] pb-10">
             <button
               className="float-right rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
               type="submit"
@@ -36,7 +47,7 @@ function Experience() {
               უკან
             </button>
             <button
-              className=" rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
+              className="rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
               type="submit"
             >
               შემდეგი
@@ -65,7 +76,7 @@ function Experience() {
         ]}
         educations={[
           {
-            school: " პროფესორი",
+            school: "პროფესორი",
             status: "სახლშო",
             schoolDate: "22-244-424",
             aboutEducation:

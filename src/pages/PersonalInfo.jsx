@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { useFormik } from "formik";
@@ -8,7 +8,11 @@ import Resume from "../components/Resume";
 import InputC from "../components/InputC";
 import image from "../assets/STAMP.svg";
 import arrow from "../assets/arrow.svg";
-
+import {
+  saveValuesToLocalStorage,
+  getValuesFromLocalStorage,
+} from "../functions/valuesUpdatingF";
+import { personalInfoKey } from "../config/localstorageKeys";
 const onSubmit = () => {
   console.log("submitted");
 };
@@ -16,17 +20,14 @@ const onSubmit = () => {
 function PersonalInfo() {
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
-      initialValues: {
-        name: "",
-        surname: "",
-        image: "",
-        message: "",
-        email: "",
-        mobile: "",
-      },
+      initialValues: getValuesFromLocalStorage(personalInfoKey),
       validationSchema: personalInfoV,
       onSubmit,
     });
+
+  useEffect(() => {
+    saveValuesToLocalStorage(values, personalInfoKey);
+  }, [values]);
   return (
     <section className="flex">
       <Link to={`${ROUTES.GETSTARTED}`}>

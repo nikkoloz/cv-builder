@@ -1,8 +1,8 @@
 import axios from "axios";
-
+import { degreeOptionsKey } from "../config/localstorageKeys";
 export const getOptions = async (setter) => {
  try {
-  let dataFromLocalStorage = localStorage.getItem('DEGREE-OPTIONS');
+  let dataFromLocalStorage = localStorage.getItem(degreeOptionsKey);
   if (dataFromLocalStorage) {
    setter(JSON.parse(dataFromLocalStorage));
   } else {
@@ -12,7 +12,7 @@ export const getOptions = async (setter) => {
     },
    });
    setter(response.data);
-   localStorage.setItem('DEGREE-OPTIONS', JSON.stringify(response.data));
+   localStorage.setItem(degreeOptionsKey, JSON.stringify(response.data));
   }
  } catch (error) {
   console.error(error);

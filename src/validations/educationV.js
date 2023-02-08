@@ -1,5 +1,6 @@
 import * as yup from "yup"
-let options = JSON.parse(localStorage.getItem('DEGREE-OPTIONS'))
+import { degreeOptionsKey } from "../config/localstorageKeys"
+let options = JSON.parse(localStorage.getItem(degreeOptionsKey))
 if (options === null) options = []
 export const educationV = yup.object({
  school: yup
