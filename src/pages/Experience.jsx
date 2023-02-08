@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ROUTES from "../config/ROUTES";
 import image from "../assets/STAMP.svg";
@@ -6,13 +6,16 @@ import Resume from "../components/Resume";
 import ExperienceForm from "../components/ExperienceForm";
 import arrow from "../assets/arrow.svg";
 import { increaseFormsArray } from "../functions/increaseFormsArray";
+import { experienceFormsIdArrKey } from "../config/localstorageKeys";
 function Experience() {
   const [formsArrId, setFormsArrId] = useState([1]);
-
-  const handleFormAddingButton = () => {
-    increaseFormsArray(formsArrId, setFormsArrId);
-  };
-
+  useEffect(() => {
+    const ids = JSON.parse(localStorage.getItem(experienceFormsIdArrKey));
+    ids !== null && setFormsArrId(ids);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem(experienceFormsIdArrKey, JSON.stringify(formsArrId));
+  }, [formsArrId]);
   return (
     <section className="flex ">
       <Link to={`/${ROUTES.PERSONAL}`}>
@@ -22,7 +25,6 @@ function Experience() {
           className="absolute top-[45px] left-[48px] z-40 p-3"
         />
       </Link>
-
       <section className="relative  min-w-[1098px] bg-main-bluelight px-[150px] pt-[47px]">
         <div className="mb-[50px] flex justify-between border-b-[1px] border-black pb-3">
           <h1 className="text-h17">გამოცდილება</h1>
@@ -34,7 +36,9 @@ function Experience() {
           })}
           <button
             className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white"
-            onClick={handleFormAddingButton}
+            onClick={() => {
+              increaseFormsArray(formsArrId, setFormsArrId);
+            }}
           >
             მეტი გამოცდილების დამატება
           </button>

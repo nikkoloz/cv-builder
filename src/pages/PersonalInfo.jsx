@@ -20,7 +20,14 @@ const onSubmit = () => {
 function PersonalInfo() {
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
-      initialValues: getValuesFromLocalStorage(personalInfoKey),
+      initialValues: getValuesFromLocalStorage(personalInfoKey, {
+        name: "",
+        surname: "",
+        image: "",
+        message: "",
+        email: "",
+        mobile: "",
+      }),
       validationSchema: personalInfoV,
       onSubmit,
     });

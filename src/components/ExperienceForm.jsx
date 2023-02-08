@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import InputC from "./InputC";
 import { useFormik } from "formik";
 import { experienceV } from "../validations/experienceV";
+import {
+  getValuesFromLocalStorage,
+  saveValuesToLocalStorage,
+} from "../functions/valuesUpdatingF";
+import { experienceKey } from "../config/localstorageKeys";
 import valid from "../assets/valid.svg";
 import invalid from "../assets/invalid.svg";
-
 const onSubmit = () => {
   console.log("submitted");
 };
@@ -11,16 +16,20 @@ const onSubmit = () => {
 function ExperienceForm({ id }) {
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
-      initialValues: {
+      initialValues: getValuesFromLocalStorage(experienceKey + id, {
         position: "",
         employer: "",
         startDate: "",
         endDate: "",
         aboutJob: "",
-      },
+      }),
       validationSchema: experienceV,
       onSubmit,
     });
+
+  useEffect(() => {
+    saveValuesToLocalStorage(values, experienceKey + id);
+  }, [values]);
   return (
     <form onSubmit={handleSubmit}>
       <InputC
