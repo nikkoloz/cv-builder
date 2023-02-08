@@ -85,8 +85,6 @@ function PersonalInfo() {
                 onChange={handleChange}
                 onBlur={handleBlur("image")}
                 value={values.image}
-                touched={touched.image}
-                error={errors.image}
               />
             </div>
           </div>

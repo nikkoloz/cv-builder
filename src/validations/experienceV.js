@@ -4,7 +4,7 @@ export const experienceV = yup.object({
  position: yup
   .string()
   .required()
-  .min(2,),
+  .min(2),
  employer: yup
   .string()
   .required()
