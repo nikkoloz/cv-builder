@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { getOptions } from "../http/getOptions";
 import EducationForm from "../components/EducationForm";
 import ROUTES from "../config/ROUTES";
 import Resume from "../components/Resume";
 import image from "../assets/STAMP.svg";
 import arrow from "../assets/arrow.svg";
+import { AppContext } from "../context/AppContext";
 function Education() {
-  const [options, setOptions] = useState([]);
-  useEffect(() => {
-    getOptions(setOptions);
-  }, []);
+  const { options } = useContext(AppContext);
   return (
     <section className="flex ">
       <Link to={`/${ROUTES.EXPERIENCE}`}>

@@ -45,7 +45,7 @@ function InputC({
         <img
           src={invalid}
           alt="nwnw"
-          className={`absolute right-[-30px] top-[47px] ${
+          className={`absolute right-[-30px] top-[45px] ${
             touched && isError ? "" : "hidden"
           }`}
         />

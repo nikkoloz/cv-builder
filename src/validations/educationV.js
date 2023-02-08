@@ -1,5 +1,6 @@
 import * as yup from "yup"
-const options = JSON.parse(localStorage.getItem('DEGREE-OPTIONS'))
+let options = JSON.parse(localStorage.getItem('DEGREE-OPTIONS'))
+if (options === null) options = []
 export const educationV = yup.object({
  school: yup
   .string()

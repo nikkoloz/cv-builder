@@ -24,5 +24,4 @@ export const personalInfoV = yup.object({
   .string()
   .required()
   .matches(/^\+995\d{9}$/)
-  .matches(/^\d+$/)
 });

@@ -95,8 +95,6 @@ function ExperienceForm() {
           value={values.aboutJob}
           onChange={handleChange}
           onBlur={handleBlur("aboutJob")}
-          // touched={touched.endDate}
-          // error={errors.endDate}
         ></textarea>
         <img
           src={invalid}

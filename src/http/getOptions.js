@@ -11,7 +11,6 @@ export const getOptions = async (setter) => {
      accept: 'application/json',
     },
    });
-   console.log(response.data);
    setter(response.data);
    localStorage.setItem('DEGREE-OPTIONS', JSON.stringify(response.data));
   }

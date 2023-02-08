@@ -70,17 +70,22 @@ function EducationForm({ options }) {
           error={errors.educationDate}
         />
       </div>
-      <div
-        className={`mb-[45px] flex flex-col border-b-[1px] border-main-gray2 pb-[58px] ${
-          errors.aboutSchool && "text-main-invalid"
-        } `}
-      >
-        <label className="mb-2 text-lb" htmlFor="about-job">
+      <div className="relative mb-[45px] flex flex-col border-b-[1px] border-main-gray2 pb-[58px]">
+        <label
+          className={`mb-2 text-lb ${
+            touched.aboutSchool && errors.aboutSchool
+              ? "text-main-invalid"
+              : "text-black"
+          }`}
+          htmlFor="aboutSchool"
+        >
           აღწერა
         </label>
         <textarea
           className={`h-[103px] w-full rounded-[4px] border-[1px] border-main-gray3 py-[13px] px-4 text-lbp ${
-            errors.aboutSchool && "border-main-invalid"
+            touched.aboutSchool && errors.aboutSchool && "border-main-invalid"
+          } ${
+            touched.aboutSchool && !errors.aboutSchool && "border-main-valid"
           }`}
           name="aboutSchool"
           id="aboutSchool"
@@ -89,6 +94,19 @@ function EducationForm({ options }) {
           onChange={handleChange}
           onBlur={handleBlur("aboutSchool")}
         ></textarea>
+        <img
+          src={invalid}
+          alt="nwnw"
+          className={`absolute right-[-30px] top-[37px] z-50 ${
+            touched.aboutSchool && !!errors.aboutSchool ? "" : "hidden"
+          }`}
+        />
+        <img
+          src={valid}
+          alt="nwnw"
+          className={`absolute right-[5px] top-[40px] z-50
+           ${touched.aboutSchool && !errors.aboutSchool ? "" : "hidden"}`}
+        />
       </div>
     </div>
   );
