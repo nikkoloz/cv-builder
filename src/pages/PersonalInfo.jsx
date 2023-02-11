@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { useFormik } from "formik";
 import { personalInfoV } from "../validations/personalInfoV";
+import { imageHandler } from "../functions/imageHandler";
 import ROUTES from "../config/ROUTES";
 import Resume from "../components/Resume";
 import InputC from "../components/InputC";
@@ -13,24 +14,31 @@ import {
   getValuesFromLocalStorage,
 } from "../functions/valuesUpdatingF";
 import { personalInfoKey } from "../config/localstorageKeys";
-const onSubmit = () => {
-  console.log("submitted");
+const onSubmit = (values, actions) => {
+  console.log(values.image);
 };
 
 function PersonalInfo() {
-  const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: getValuesFromLocalStorage(personalInfoKey, {
-        name: "",
-        surname: "",
-        image: "",
-        message: "",
-        email: "",
-        mobile: "",
-      }),
-      validationSchema: personalInfoV,
-      onSubmit,
-    });
+  const {
+    values,
+    errors,
+    handleBlur,
+    touched,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+  } = useFormik({
+    initialValues: getValuesFromLocalStorage(personalInfoKey, {
+      name: "",
+      surname: "",
+      image: "",
+      message: "",
+      email: "",
+      mobile: "",
+    }),
+    validationSchema: personalInfoV,
+    onSubmit,
+  });
 
   useEffect(() => {
     saveValuesToLocalStorage(values, personalInfoKey);
@@ -90,13 +98,11 @@ function PersonalInfo() {
                 type="file"
                 id="image"
                 name="image"
-                onChange={handleChange}
-                onBlur={handleBlur("image")}
-                value={values.image}
+                onChange={(e) => imageHandler(e, setFieldValue)}
               />
             </div>
           </div>
-
+          <img src={values.image} alt="" />
           <div className="mb-[33px] flex flex-col">
             <label className="mb-2 text-lb" htmlFor="message">
               ჩემ შესახებ (არასავალდებულო)
