@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import EducationForm from "../components/EducationForm";
 import ROUTES from "../config/ROUTES";
 import Resume from "../components/Resume";
@@ -8,9 +8,11 @@ import arrow from "../assets/arrow.svg";
 import { AppContext } from "../context/AppContext";
 import { increaseFormsArray } from "../functions/increaseFormsArray";
 import { educationFormsIdArrKey } from "../config/localstorageKeys";
+import { clearAllData } from "../functions/clearAllData";
 function Education() {
   const { options } = useContext(AppContext);
   const [formsArrId, setFormsArrId] = useState([1]);
+  const navigate = useNavigate();
   useEffect(() => {
     const ids = JSON.parse(localStorage.getItem(educationFormsIdArrKey));
     ids !== null && setFormsArrId(ids);
@@ -20,8 +22,9 @@ function Education() {
   }, [formsArrId]);
   return (
     <section className="flex ">
-      <Link to={`/${ROUTES.EXPERIENCE}`}>
+      <Link to={`/${ROUTES.GETSTARTED}`}>
         <img
+          onClick={clearAllData}
           src={arrow}
           alt="arrow"
           className="absolute top-[45px] left-[48px] z-40 p-3"
@@ -48,7 +51,9 @@ function Education() {
           <div className="mt-[115px] pb-10 ">
             <button
               className="float-right rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
-              type="submit"
+              onClick={() => {
+                navigate(`${ROUTES.EXPERIENCE}`);
+              }}
             >
               უკან
             </button>
@@ -56,7 +61,7 @@ function Education() {
               className=" rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
               type="submit"
             >
-              დასტულება
+              დასრულება
             </button>
           </div>
         </div>
