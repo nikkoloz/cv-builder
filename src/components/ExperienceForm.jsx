@@ -115,7 +115,7 @@ function ExperienceForm({ id }) {
         <img
           src={valid}
           alt="nwnw"
-          className={`absolute top-[47px]
+          className={`absolute top-[40px] right-[5px]
            ${touched.aboutJob && !errors.aboutJob ? "" : "hidden"}`}
         />
       </div>

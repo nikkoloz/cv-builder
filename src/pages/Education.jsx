@@ -22,7 +22,7 @@ function Education() {
   }, [formsArrId]);
   return (
     <section className="flex ">
-      <Link to={`/${ROUTES.GETSTARTED}`}>
+      <Link to={`${ROUTES.GETSTARTED}`}>
         <img
           onClick={clearAllData}
           src={arrow}
@@ -52,7 +52,7 @@ function Education() {
             <button
               className="float-right rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
               onClick={() => {
-                navigate(`${ROUTES.EXPERIENCE}`);
+                navigate(`/${ROUTES.EXPERIENCE}`);
               }}
             >
               უკან

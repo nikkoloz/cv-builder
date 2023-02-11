@@ -22,7 +22,7 @@ function Resume({
       ${border && " border-[1px] border-black"}`}
     >
       <div className="flex border-b-[1px] border-main-gray">
-        <div className="mt-[68px] mb-5">
+        <div className="mt-[68px] mb-5 w-[430px]">
           <h1 className="mb-4 text-ch1 text-main-red">
             {name} {surname}
           </h1>
@@ -35,16 +35,16 @@ function Resume({
             <h6 className="text-cp text-main-black">{mobNumber}</h6>
           </div>
           <h2 className="mb-4 text-ch2 text-main-red">ჩემ შესახებ</h2>
-          <p className="">{aboutMe}</p>
+          <p className="text-base">{aboutMe}</p>
         </div>
         <img
           src={image}
           alt="avatar"
-          className=" mt-12 h-[246px] w-[246px] rounded-full bg-black"
+          className="mb-[47px] mt-12 h-[246px] w-[246px] rounded-full"
         />
       </div>
       <div
-        className={` border-t-[1px] border-main-gray pt-6 ${
+        className={`border-t-[1px] border-main-gray pt-6 ${
           experiences.length === 0 && "hidden"
         }`}
       >

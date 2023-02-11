@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 import ROUTES from "../config/ROUTES";
-import image from "../assets/STAMP.svg";
 import Resume from "../components/Resume";
 import ExperienceForm from "../components/ExperienceForm";
 import arrow from "../assets/arrow.svg";
@@ -10,6 +10,7 @@ import { experienceFormsIdArrKey } from "../config/localstorageKeys";
 import { clearAllData } from "../functions/clearAllData";
 function Experience() {
   const navigate = useNavigate();
+  const { personalInformation, educationInformation } = useContext(AppContext);
   const [formsArrId, setFormsArrId] = useState([1]);
   useEffect(() => {
     const ids = JSON.parse(localStorage.getItem(experienceFormsIdArrKey));
@@ -22,7 +23,7 @@ function Experience() {
 
   return (
     <section className="flex ">
-      <Link to={`/${ROUTES.GETSTARTED}`}>
+      <Link to={`${ROUTES.GETSTARTED}`}>
         <img
           onClick={clearAllData}
           src={arrow}
@@ -50,51 +51,29 @@ function Experience() {
           </button>
 
           <div className="mt-[115px] pb-10">
-            <button
-              className="float-right rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
-              onClick={() => {
-                navigate(`${ROUTES.PERSONAL}`);
-              }}
-            >
-              უკან
+            <button className="float-right rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white">
+              შემდეგი
             </button>
             <button
               className="rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
-              type="submit"
+              onClick={() => {
+                navigate(`/${ROUTES.PERSONAL}`);
+              }}
             >
-              შემდეგი
+              უკან
             </button>
           </div>
         </div>
       </section>
       <Resume
-        name={"ქრისტეფორე"}
-        surname={"მგალობლიშვილი"}
-        image={image}
-        email={"mmeesdssnikko@agruni.ge"}
-        mobNumber={"50055443443"}
-        aboutMe={
-          "ძალიან მიყვარს დიზაინის კეთება. დილით ადრე რომ ავდგები გამამხნევებელი ვარჯიშების მაგიერ დიზაინს ვაკეთებ."
-        }
-        experiences={[
-          {
-            position: "მერძევე მთავარი პროფესორი",
-            company: "სახლშო",
-            workDateFrom: "22-244-424",
-            workDateTo: "22-244-424",
-            aboutExperience:
-              "Experienced Javascript Native Developer with 5 years in tდსდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,ფლაასდაფევსდფაწეფვრბფსდაეფედფერვსდფ",
-          },
-        ]}
-        educations={[
-          {
-            school: "პროფესორი",
-            status: "სახლშო",
-            schoolDate: "22-244-424",
-            aboutEducation:
-              "Experienced Javascript Native Developer with 5 years in tდსდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,ფლაასდაფევსდფაწეფვრბფსდაეფედფერვსდფ",
-          },
-        ]}
+        name={personalInformation.name}
+        surname={personalInformation.surname}
+        image={personalInformation.image}
+        email={personalInformation.email}
+        mobNumber={personalInformation.mobile}
+        aboutMe={personalInformation.message}
+        experiences={[]}
+        educations={educationInformation}
         border={false}
       />
     </section>

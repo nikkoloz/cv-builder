@@ -18,7 +18,11 @@ import { clearAllData } from "../functions/clearAllData";
 
 function PersonalInfo() {
   const navigate = useNavigate();
-  const { setPersonalInformation } = useContext(AppContext);
+  const {
+    setPersonalInformation,
+    experienceInformation,
+    educationInformation,
+  } = useContext(AppContext);
   const {
     values,
     errors,
@@ -156,29 +160,14 @@ function PersonalInfo() {
         </form>
       </section>
       <Resume
-        name={"ქრისტეფორე"}
-        surname={"მგალობლიშვილი"}
+        name={values.name}
+        surname={values.surname}
         image={values.image}
-        email={"mmeesdssnikko@agruni.ge"}
-        mobNumber={"50055443443"}
-        aboutMe={
-          "ძალიან მიყვარს დიზაინის კეთება. დილით ადრე რომ ავდგები გამამხნევებელი ვარჯიშების მაგიერ დიზაინს ვაკეთებ. "
-        }
-        position={"მერძევე მთავარი პროფესორი"}
-        company={"სახლშო"}
-        workDateFrom={"22-244-424"}
-        workDateTo={"22-244-424"}
-        aboutExperience={
-          "Experienced Javascript Native Developer with 5 years in tდსდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,ფლაასდაფევსდფაწეფვრბფსდაეფედფერვსდფ"
-        }
-        experiences={[]}
-        educations={[]}
-        school={"ილია "}
-        status={"სდსდ"}
-        schoolDate={"212333231"}
-        aboutEducation={
-          "erienced Javascript Native Developer with 5 years in tდსდდდდდდდ დდდდდდდდდდ დდდდდდდდდ დდდდდდდდდდდ დდდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,"
-        }
+        email={values.email}
+        mobNumber={values.mobile}
+        aboutMe={values.message}
+        experiences={experienceInformation}
+        educations={educationInformation}
         border={false}
       />
     </section>
