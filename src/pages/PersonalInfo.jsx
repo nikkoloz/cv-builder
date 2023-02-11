@@ -1,24 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { personalInfoV } from "../validations/personalInfoV";
 import { imageHandler } from "../functions/imageHandler";
 import ROUTES from "../config/ROUTES";
 import Resume from "../components/Resume";
 import InputC from "../components/InputC";
-import image from "../assets/STAMP.svg";
 import arrow from "../assets/arrow.svg";
 import {
   saveValuesToLocalStorage,
   getValuesFromLocalStorage,
 } from "../functions/valuesUpdatingF";
 import { personalInfoKey } from "../config/localstorageKeys";
-const onSubmit = (values, actions) => {
-  console.log(values.image);
-};
+import { AppContext } from "../context/AppContext";
+import { clearAllData } from "../functions/clearAllData";
 
 function PersonalInfo() {
+  const navigate = useNavigate();
+  const { setPersonalInformation } = useContext(AppContext);
   const {
     values,
     errors,
@@ -37,7 +37,10 @@ function PersonalInfo() {
       mobile: "",
     }),
     validationSchema: personalInfoV,
-    onSubmit,
+    onSubmit: () => {
+      setPersonalInformation(values);
+      navigate(`/${ROUTES.EXPERIENCE}`);
+    },
   });
 
   useEffect(() => {
@@ -47,6 +50,7 @@ function PersonalInfo() {
     <section className="flex">
       <Link to={`${ROUTES.GETSTARTED}`}>
         <img
+          onClick={clearAllData}
           src={arrow}
           alt="arrow"
           className="absolute top-[45px] left-[48px] p-3"
@@ -57,7 +61,7 @@ function PersonalInfo() {
           <h1 className="text-h17">პირადი ინფო</h1>
           <h1 className="text-gb1">1/3</h1>
         </div>
-        <form className="" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-[54px] flex w-full justify-between">
             <InputC
               divClass="mr-[56px]"
@@ -100,9 +104,9 @@ function PersonalInfo() {
                 name="image"
                 onChange={(e) => imageHandler(e, setFieldValue)}
               />
+              <h1 className="ml-5 text-main-invalid">{errors.image}</h1>
             </div>
           </div>
-          <img src={values.image} alt="" />
           <div className="mb-[33px] flex flex-col">
             <label className="mb-2 text-lb" htmlFor="message">
               ჩემ შესახებ (არასავალდებულო)
@@ -154,7 +158,7 @@ function PersonalInfo() {
       <Resume
         name={"ქრისტეფორე"}
         surname={"მგალობლიშვილი"}
-        image={image}
+        image={values.image}
         email={"mmeesdssnikko@agruni.ge"}
         mobNumber={"50055443443"}
         aboutMe={

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ROUTES from "../config/ROUTES";
 import image from "../assets/STAMP.svg";
 import Resume from "../components/Resume";
@@ -7,9 +7,10 @@ import ExperienceForm from "../components/ExperienceForm";
 import arrow from "../assets/arrow.svg";
 import { increaseFormsArray } from "../functions/increaseFormsArray";
 import { experienceFormsIdArrKey } from "../config/localstorageKeys";
+import { clearAllData } from "../functions/clearAllData";
 function Experience() {
+  const navigate = useNavigate();
   const [formsArrId, setFormsArrId] = useState([1]);
-
   useEffect(() => {
     const ids = JSON.parse(localStorage.getItem(experienceFormsIdArrKey));
     ids !== null && setFormsArrId(ids);
@@ -21,8 +22,9 @@ function Experience() {
 
   return (
     <section className="flex ">
-      <Link to={`/${ROUTES.PERSONAL}`}>
+      <Link to={`/${ROUTES.GETSTARTED}`}>
         <img
+          onClick={clearAllData}
           src={arrow}
           alt="arrow"
           className="absolute top-[45px] left-[48px] z-40 p-3"
@@ -50,7 +52,9 @@ function Experience() {
           <div className="mt-[115px] pb-10">
             <button
               className="float-right rounded-[4px] bg-main-purple py-[14px] px-10 text-ne text-white"
-              type="submit"
+              onClick={() => {
+                navigate(`${ROUTES.PERSONAL}`);
+              }}
             >
               უკან
             </button>
