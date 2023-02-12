@@ -108,7 +108,13 @@ function PersonalInfo() {
                 name="image"
                 onChange={(e) => imageHandler(e, setFieldValue)}
               />
-              <h1 className="ml-5 text-main-invalid">{errors.image}</h1>
+              <h1
+                className={`ml-5 text-main-invalid ${
+                  touched.image && errors.image ? "" : "hidden"
+                }`}
+              >
+                {errors.image}
+              </h1>
             </div>
           </div>
           <div className="mb-[33px] flex flex-col">

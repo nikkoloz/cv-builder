@@ -41,7 +41,7 @@ function Experience() {
             return <ExperienceForm id={id} key={id} />;
           })}
           <button
-            className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne  text-white"
+            className="block rounded-[4px] bg-main-blue2 py-[14px] px-5 text-ne text-white"
             onClick={(e) => {
               e.preventDefault();
               increaseFormsArray(formsArrId, setFormsArrId);
