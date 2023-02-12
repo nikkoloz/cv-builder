@@ -10,13 +10,14 @@ function InputC({
   labelText,
   pText,
   placeholder,
+
   value,
   onChange,
   onBlur,
-  error,
+  errors,
   touched,
 }) {
-  let isError = !!error;
+  let isError = !!errors;
   return (
     <div className={`relative flex w-full flex-col  ${divClass}`}>
       <label
