@@ -1,4 +1,4 @@
-import { Education, PersonalInfo, GetStarted, Experience, Cv } from "../pages/index.js";
+import { Education, PersonalInfo, GetStarted, Experience, Cv, Test, TestExp } from "../pages/index.js";
 import ROUTES from "./ROUTES.js";
 const ROUTES_CONFIG = [
  {
@@ -9,7 +9,7 @@ const ROUTES_CONFIG = [
   page: PersonalInfo
  }, {
   path: ROUTES.EXPERIENCE,
-  page: Experience
+  page: TestExp
  }, {
   path: ROUTES.EDUCATION,
   page: Education

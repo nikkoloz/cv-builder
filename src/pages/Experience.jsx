@@ -22,7 +22,7 @@ function Experience() {
   }, [formsArrId]);
 
   return (
-    <section className="flex ">
+    <section className="flex">
       <Link to={`${ROUTES.GETSTARTED}`}>
         <img
           onClick={clearAllData}
@@ -65,7 +65,7 @@ function Experience() {
           </div>
         </div>
       </section>
-      <Resume
+      {/* <Resume
         name={personalInformation.name}
         surname={personalInformation.surname}
         image={personalInformation.image}
@@ -75,7 +75,7 @@ function Experience() {
         experiences={[]}
         educations={educationInformation}
         border={false}
-      />
+      /> */}
     </section>
   );
 }
