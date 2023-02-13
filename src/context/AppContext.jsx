@@ -4,20 +4,24 @@ import {
   submittedPersonalInfoKey,
   submittedExperienceKey,
   submittedEducationKey,
+  resivedResumeKey,
 } from "../config/localstorageKeys";
 import { saveValuesToLocalStorage } from "../functions/valuesUpdatingF";
 const AppContext = createContext();
 
 function AppContextProvider({ children }) {
+  const [resivedResume, setResivedResume] = useState({});
+
   const [personalInformation, setPersonalInformation] = useState({});
-  const [experienceInformation, setExperienceInformation] = useState([]);
-  const [educationInformation, setEducationInformation] = useState([]);
+  const [experienceInformation, setExperienceInformation] = useState({});
+  const [educationInformation, setEducationInformation] = useState({});
   const [options, setOptions] = useState([]);
-  // get on refresh from localstorage
+
   useEffect(() => {
     const submittedPer = localStorage.getItem(submittedPersonalInfoKey);
     const submittedExp = localStorage.getItem(submittedExperienceKey);
     const submittedEdu = localStorage.getItem(submittedEducationKey);
+    const resivedCV = localStorage.getItem(resivedResumeKey);
     if (submittedPer) {
       setPersonalInformation(JSON.parse(submittedPer));
     }
@@ -27,9 +31,15 @@ function AppContextProvider({ children }) {
     if (submittedEdu) {
       setEducationInformation(JSON.parse(submittedEdu));
     }
+    console.log("context",JSON.parse(resivedCV));
+    console.log("context",resivedResume);
+    if (resivedCV) {
+     console.log("setting from localstorage",JSON.parse(resivedCV));
+     console.log("setting from localstorage",resivedResume);
+      setResivedResume(JSON.parse(resivedCV));
+    }
   }, []);
 
-  //set on change
   useEffect(() => {
     saveValuesToLocalStorage(personalInformation, submittedPersonalInfoKey);
   }, [personalInformation]);
@@ -39,7 +49,11 @@ function AppContextProvider({ children }) {
   useEffect(() => {
     saveValuesToLocalStorage(educationInformation, submittedEducationKey);
   }, [educationInformation]);
-  //fetch otions
+  useEffect(() => {
+   console.log("saveing in localstorage",resivedResume);
+    saveValuesToLocalStorage(resivedResume, resivedResumeKey);
+  }, [resivedResume]);
+
   useEffect(() => {
     getOptions(setOptions);
   }, []);
@@ -54,6 +68,8 @@ function AppContextProvider({ children }) {
         setEducationInformation,
         options,
         setOptions,
+        resivedResume,
+        setResivedResume,
       }}
     >
       {children}
