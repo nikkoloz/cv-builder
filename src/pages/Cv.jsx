@@ -1,52 +1,52 @@
-import image from "../assets/LOGO.svg";
 import arrow from "../assets/arrow.svg";
 import X from "../assets/x.svg";
 import Resume from "../components/Resume";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ROUTES from "../config/ROUTES";
+import { AppContext } from "../context/AppContext";
+import { resivedResumeKey } from "../config/localstorageKeys";
 
 function Cv() {
+  const cvFromApi = JSON.parse(localStorage.getItem(resivedResumeKey));
+  const [showCongrats, setShowCongrats] = useState(true);
+  const { personalInformation, educationInformation, experienceInformation } =
+    useContext(AppContext);
   return (
     <>
-      <Link to={`/${ROUTES.EDUCATION}`}>
+      <Link to={`${ROUTES.GETSTARTED}`}>
         <img
           src={arrow}
           alt="arrow"
           className="absolute top-[45px] left-[48px] p-3"
         />
       </Link>
-      <div className="absolute right-[70px] top-[54px] h-[167px] w-[427px] px-8 pt-10 shadow-custom-shadow">
-        <img src={X} alt="X" className="absolute right-[12px] top-[18px]" />
-        <h1 className="text-du text-main-black">
-          რეზიუმე წარმატებით გაიგზავნა 🎉
-        </h1>
-      </div>
+      {showCongrats && (
+        <div className="absolute right-[70px] top-[54px] h-[167px] w-[427px] px-8 pt-10 shadow-custom-shadow">
+          <img
+            src={X}
+            alt="X"
+            className="absolute right-[12px] top-[18px] p-4"
+            onClick={() => {
+              setShowCongrats(false);
+            }}
+          />
+          <h1 className="text-du text-main-black">
+            რეზიუმე წარმატებით გაიგზავნა 🎉
+          </h1>
+        </div>
+      )}
+      {console.log(cvFromApi, "test")}
       <div className="border-[1px] border-black">
         <Resume
-          name={"ქრისტეფორე"}
-          surname={"მგალობლიშვილი"}
-          image={image}
-          email={"mmeesdssnikko@agruni.ge"}
-          mobNumber={"50055443443"}
-          aboutMe={
-            "asfaffasfasasfaffasfasasfaff asfasasfaff asfasasfaffasfasasfaffasf asasfaffasf asasfaffasfasasfa ffasfasasfa ffasfasas faff asfasasfaffas fasasfaffa sfasasfaff asfasasfaff asfasasfaf fasfasasfaff asfasasfa ffasfasasfa ffasfas"
-          }
-          position={"მერძევე მთავარი პროფესორი"}
-          company={"სახლშო"}
-          workDateFrom={"22-244-424"}
-          workDateTo={"22-244-424"}
-          experience={
-            "Experienced Javascript Native Developer with 5 years in tდსდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდდდდ დდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,ფლაასდაფევსდფაწეფვრბფსდაეფედფერვსდფ"
-          }
-          school={"ილია "}
-          status={"სდსდ"}
-          schoolDate={"212333231"}
-          aboutEducation={
-            "erienced Javascript Native Developer with 5 years in tდსდდდდდდდ დდდდდდდდდდ დდდდდდდდდ დდდდდდდდდდდ დდდდდდდდსდასდა ასფავ ასფას,დსა დს,ლვასფ,ას,"
-          }
-          experiences={[]}
-          educations={[]}
+          name={cvFromApi.name}
+          surname={cvFromApi.surname}
+          image={cvFromApi.image}
+          email={cvFromApi.email}
+          mobNumber={cvFromApi.phone_number}
+          aboutMe={cvFromApi.about_me}
+          experience={cvFromApi.experiences[0]}
+          education={cvFromApi.educations[0]}
           border={true}
           marginT={true}
           marginB={true}

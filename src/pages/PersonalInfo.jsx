@@ -20,8 +20,6 @@ function PersonalInfo() {
   const navigate = useNavigate();
   const {
     setPersonalInformation,
-    experienceInformation,
-    educationInformation,
   } = useContext(AppContext);
   const {
     values,
@@ -46,7 +44,6 @@ function PersonalInfo() {
       navigate(`/${ROUTES.EXPERIENCE}`);
     },
   });
-
   useEffect(() => {
     saveValuesToLocalStorage(values, personalInfoKey);
   }, [values]);
@@ -172,9 +169,8 @@ function PersonalInfo() {
         email={values.email}
         mobNumber={values.mobile}
         aboutMe={values.message}
-        experiences={experienceInformation}
-        educations={educationInformation}
-        border={false}
+        experience={{}}
+        education={{}}
       />
     </section>
   );

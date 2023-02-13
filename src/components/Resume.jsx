@@ -8,18 +8,31 @@ function Resume({
   email,
   mobNumber,
   aboutMe,
-  experiences,
-  educations,
+  experience,
+  education,
   border,
   marginT,
   marginB,
 }) {
+  const isExperience = !!(
+    !experience.position &&
+    !experience.aboutJob &&
+    !experience.employer &&
+    !experience.startDate &&
+    !experience.endDate
+  );
+  const isEducation = !!(
+    !education.school &&
+    !education.degree &&
+    !education.educationDate &&
+    !education.aboutSchool
+  );
   return (
     <section
-      className={`relative mx-auto min-h-[1080px] max-w-[822px] bg-white pb-32 pl-[80px] pr-[75px]
+      className={`relative mx-auto min-h-[950px] max-w-[822px] bg-white pb-32 pl-[80px] pr-[75px] 
       ${marginT && "mt-[54px]"}   
       ${marginB && "mb-[100px]"}   
-      ${border && " border-[1px] border-black"}`}
+      ${border && "border-[1px] border-black"}`}
     >
       <div className="flex border-b-[1px] border-main-gray">
         <div className="mt-[68px] mb-5 w-[430px]">
@@ -27,75 +40,74 @@ function Resume({
             {name} {surname}
           </h1>
           <div className="mb-[10px] flex">
-            <img src={snail} alt="snail" className="mr-3" />
+            <img
+              src={snail}
+              alt="snail"
+              className={`mr-3 ${!email && "hidden"}`}
+            />
             <h6 className=" text-cp text-main-black">{email}</h6>
           </div>
           <div className="mb-[34px] flex">
-            <img src={tel} alt="tel" className="mr-3" />
+            <img
+              src={tel}
+              alt="tel"
+              className={`mr-3 ${!mobNumber && "hidden"}`}
+            />
             <h6 className="text-cp text-main-black">{mobNumber}</h6>
           </div>
-          <h2 className="mb-4 text-ch2 text-main-red">ჩემ შესახებ</h2>
+          <h2 className={`mb-4 text-ch2 text-main-red ${!aboutMe && "hidden"}`}>
+            ჩემ შესახებ
+          </h2>
           <p className="text-base">{aboutMe}</p>
         </div>
         <img
-          src={image}
+          src={"https://resume.redberryinternship.ge/" + image}
           alt="avatar"
-          className="mb-[47px] mt-12 h-[246px] w-[246px] rounded-full"
+          className={`mb-[47px] mt-12 h-[246px] w-[246px] rounded-full ${
+            !image && "hidden"
+          } `}
         />
       </div>
       <div
         className={`border-t-[1px] border-main-gray pt-6 ${
-          experiences.length === 0 && "hidden"
+          isExperience && "hidden"
         }`}
       >
         <h1 className="mb-4 text-ch2 text-main-red ">გამოცდილება</h1>
-        {experiences.map((A, i) => {
-          return (
-            <div key={i}>
-              <div className="mb-[7px] flex text-ne text-main-black">
-                <h2 className="mr-2">
-                  {A.position}
-                  {A.position && A.company && ","}
-                </h2>
-                <h2>{A.company}</h2>
-              </div>
-              <h2
-                className="mb-4 text-main-date"
-                style={{ fontStyle: "italic" }}
-              >
-                {A.workDateFrom} {A.workDateFrom && A.workDateTo && "-"}{" "}
-                {A.workDateTo}
-              </h2>
-              <p className="mb-8 text-cp2">{A.aboutExperience}</p>
-            </div>
-          );
-        })}
+        <div>
+          <div className="mb-[7px] flex text-ne text-main-black">
+            <h2 className="mr-2">
+              {experience.position}
+              {experience.position && experience.employer && ","}
+            </h2>
+            <h2>{experience.employer}</h2>
+          </div>
+          <h2 className="mb-4 text-main-date" style={{ fontStyle: "italic" }}>
+            {experience.startDate}
+            {experience.startDate && experience.endDate && "-"}
+            {experience.endDate}
+          </h2>
+          <p className="mb-8 text-cp2">{experience.aboutJob}</p>
+        </div>
       </div>
       <div
         className={`relative border-t-[1px] border-main-gray pt-6 ${
-          educations.length === 0 && "hidden"
-        } `}
+          isEducation && "hidden"
+        }`}
       >
         <h1 className="mb-4 text-ch2 text-main-red ">განათლება</h1>
-        {educations.map((B, i) => {
-          return (
-            <div key={i} className="mb-6">
-              <div className="flex">
-                <h2 className="mr-2">
-                  {B.school} {B.school && B.status && ","}
-                </h2>
-                <h2>{B.status}</h2>
-              </div>
-              <h2
-                className="mb-4 text-main-date"
-                style={{ fontStyle: "italic" }}
-              >
-                {B.schoolDate}
-              </h2>
-              <p className="text-cp2">{B.aboutEducation}</p>
-            </div>
-          );
-        })}
+        <div className="mb-6">
+          <div className="flex">
+            <h2 className="mr-2">
+              {education.school} {education.school && education.degree && ","}
+            </h2>
+            <h2>{education.degree}</h2>
+          </div>
+          <h2 className="mb-4 text-main-date" style={{ fontStyle: "italic" }}>
+            {education.educationDate}
+          </h2>
+          <p className="text-cp2">{education.aboutSchool}</p>
+        </div>
       </div>
       <img src={cvLogo} alt="logo" className="absolute bottom-[44px]" />
     </section>

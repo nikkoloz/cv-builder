@@ -11,10 +11,7 @@ export const personalInfoV = yup.object({
   .required()
   .min(2)
   .matches(/^[ა-ჰ]+$/),
- image: yup.mixed().required().test("is-image", "Selected file is not an image. Valid extensions: jpeg, jpg, png", value => {
-  if (!value) return true;
-  return ["jpeg", "jpg", "png"].includes(value.split("/")[1].split(";")[0])
- }),
+ image: yup.mixed().required(),
  aboutMe: yup.string().notRequired(),
  email: yup
   .string()
