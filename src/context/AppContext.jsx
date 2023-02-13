@@ -31,11 +31,11 @@ function AppContextProvider({ children }) {
     if (submittedEdu) {
       setEducationInformation(JSON.parse(submittedEdu));
     }
-    console.log("context",JSON.parse(resivedCV));
-    console.log("context",resivedResume);
+    console.log("context", JSON.parse(resivedCV));
+    console.log("context", resivedResume);
     if (resivedCV) {
-     console.log("setting from localstorage",JSON.parse(resivedCV));
-     console.log("setting from localstorage",resivedResume);
+      console.log("setting from localstorage", JSON.parse(resivedCV));
+      console.log("setting from localstorage", resivedResume);
       setResivedResume(JSON.parse(resivedCV));
     }
   }, []);
@@ -50,8 +50,11 @@ function AppContextProvider({ children }) {
     saveValuesToLocalStorage(educationInformation, submittedEducationKey);
   }, [educationInformation]);
   useEffect(() => {
-   console.log("saveing in localstorage",resivedResume);
-    saveValuesToLocalStorage(resivedResume, resivedResumeKey);
+    console.log("saveing in localstorage", resivedResume);
+    const resivedCV = JSON.parse(localStorage.getItem(resivedResumeKey));
+    if (!resivedCV || Object.keys(resivedCV).length === 0) {
+      saveValuesToLocalStorage(resivedResume, resivedResumeKey);
+    }
   }, [resivedResume]);
 
   useEffect(() => {

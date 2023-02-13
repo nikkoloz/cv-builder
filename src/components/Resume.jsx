@@ -27,6 +27,7 @@ function Resume({
     !education.educationDate &&
     !education.aboutSchool
   );
+  console.log(experience);
   return (
     <section
       className={`relative mx-auto min-h-[950px] max-w-[822px] bg-white pb-32 pl-[80px] pr-[75px] 

@@ -4,14 +4,12 @@ import Resume from "../components/Resume";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ROUTES from "../config/ROUTES";
-import { AppContext } from "../context/AppContext";
 import { resivedResumeKey } from "../config/localstorageKeys";
 
 function Cv() {
   const cvFromApi = JSON.parse(localStorage.getItem(resivedResumeKey));
   const [showCongrats, setShowCongrats] = useState(true);
-  const { personalInformation, educationInformation, experienceInformation } =
-    useContext(AppContext);
+
   return (
     <>
       <Link to={`${ROUTES.GETSTARTED}`}>
