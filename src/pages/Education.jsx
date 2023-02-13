@@ -55,7 +55,7 @@ function Education() {
           console.log(res);
           setResivedResume(res);
         });
-        // clearAllData();
+        clearAllData();
         navigate(`/${ROUTES.CV}`);
         console.log(resivedResume);
       },

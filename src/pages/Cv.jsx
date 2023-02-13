@@ -5,13 +5,10 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ROUTES from "../config/ROUTES";
 import { AppContext } from "../context/AppContext";
-import { resivedResumeKey } from "../config/localstorageKeys";
 
 function Cv() {
-  const cvFromApi = JSON.parse(localStorage.getItem(resivedResumeKey));
   const [showCongrats, setShowCongrats] = useState(true);
-  const { personalInformation, educationInformation, experienceInformation } =
-    useContext(AppContext);
+  const { resivedResume } = useContext(AppContext);
   return (
     <>
       <Link to={`${ROUTES.GETSTARTED}`}>
@@ -36,21 +33,24 @@ function Cv() {
           </h1>
         </div>
       )}
-      {console.log(cvFromApi, "test")}
-      <div className="border-[1px] border-black">
-        <Resume
-          name={cvFromApi.name}
-          surname={cvFromApi.surname}
-          image={cvFromApi.image}
-          email={cvFromApi.email}
-          mobNumber={cvFromApi.phone_number}
-          aboutMe={cvFromApi.about_me}
-          experience={cvFromApi.experiences[0]}
-          education={cvFromApi.educations[0]}
-          border={true}
-          marginT={true}
-          marginB={true}
-        />
+      {console.log("თითქმის", resivedResume)}
+      <div className="">
+        {resivedResume && Object.keys(resivedResume).length !== 0 && (
+          <Resume
+            name={resivedResume.name}
+            surname={resivedResume.surname}
+            image={resivedResume.image}
+            email={resivedResume.email}
+            mobNumber={resivedResume.phone_number}
+            aboutMe={resivedResume.about_me}
+            experience={resivedResume.experiences[0]}
+            education={resivedResume.educations[0]}
+            border={true}
+            marginT={true}
+            marginB={true}
+            isCVPage={true}
+          />
+        )}
       </div>
     </>
   );
